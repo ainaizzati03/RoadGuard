@@ -44,7 +44,7 @@
             android:padding="8dp">
 
             <TextView
-                android:id="@+id/IC"
+                android:id="@+id/ic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

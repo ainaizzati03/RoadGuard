@@ -83,33 +83,29 @@ public class LoginActivity extends AppCompatActivity {
         String userPassword = loginPassword.getText().toString().trim();
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-        Query checkUserDatabase = reference.orderByChild("IC").equalTo(userIC);
 
-        checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+        reference.child(userIC).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    for (DataSnapshot userSnapshot : snapshot.getChildren()) {
-                        String passwordFromDB = userSnapshot.child("password").getValue(String.class);
+                    String passwordFromDB = snapshot.child("password").getValue(String.class);
 
-                        if (passwordFromDB != null && passwordFromDB.equals(userPassword)) {
-                            String ICFromDB = userSnapshot.child("IC").getValue(String.class);
-                            String nameFromDB = userSnapshot.child("name").getValue(String.class);
-                            String phoneFromDB = userSnapshot.child("phone").getValue(String.class);
+                    if (passwordFromDB != null && passwordFromDB.equals(userPassword)) {
+                        String icFromDB = snapshot.child("ic").getValue(String.class);
+                        String nameFromDB = snapshot.child("name").getValue(String.class);
+                        String phoneFromDB = snapshot.child("phone").getValue(String.class);
 
-                            Intent intent = new Intent(LoginActivity.this, Account.class);
-                            intent.putExtra("IC", ICFromDB);
-                            intent.putExtra("name", nameFromDB);
-                            intent.putExtra("phone", phoneFromDB);
-                            intent.putExtra("password", passwordFromDB);
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 
-                            startActivity(intent);
-                            return;
-                        } else {
-                            loginPassword.setError("Invalid Credentials");
-                            loginPassword.requestFocus();
-                            return;
-                        }
+                        intent.putExtra("ic", icFromDB);
+                        intent.putExtra("name", nameFromDB);
+                        intent.putExtra("phone", phoneFromDB);
+                        intent.putExtra("password", passwordFromDB);
+
+                        startActivity(intent);
+                    } else {
+                        loginPassword.setError("Invalid Credentials");
+                        loginPassword.requestFocus();
                     }
                 } else {
                     loginIC.setError("User does not exist");
@@ -119,8 +115,10 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Optional: handle database error here
+                // Handle possible errors
             }
         });
     }
+
+
 }

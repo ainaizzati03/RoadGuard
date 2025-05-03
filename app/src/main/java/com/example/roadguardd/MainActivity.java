@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     Button driveModeButton;
-    Button updateProfileButton;  // Declare the Update Profile button
+    Button updateProfileButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +28,10 @@ public class MainActivity extends AppCompatActivity {
         // Set onClickListener for the "Update Profile" button
         updateProfileButton.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, ProfileActivity.class);  // Intent to navigate to UpdateAccountActivity
+            intent.putExtra("ic", getIntent().getStringExtra("ic"));
+            intent.putExtra("name", getIntent().getStringExtra("name"));
+            intent.putExtra("phone", getIntent().getStringExtra("phone"));
+            intent.putExtra("password", getIntent().getStringExtra("password"));
             startActivity(intent);
         });
     }

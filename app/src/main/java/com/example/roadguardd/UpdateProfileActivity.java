@@ -79,7 +79,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
     public void showData(){
         Intent intent = getIntent();
 
-        ICUser = intent.getStringExtra("IC");
+        ICUser = intent.getStringExtra("ic");
         nameUser = intent.getStringExtra("name");
         phoneUser = intent.getStringExtra("phone");
         passwordUser = intent.getStringExtra("password");

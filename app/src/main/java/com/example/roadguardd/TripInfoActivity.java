@@ -68,7 +68,7 @@ public class TripInfoActivity extends AppCompatActivity {
                     addDetail.getText().toString()
             );
 
-            FirebaseDatabase.getInstance().getReference("TripInfo")
+            FirebaseDatabase.getInstance().getReference("TripInformation")
                     .push()
                     .setValue(tripData)
                     .addOnSuccessListener(unused -> {
