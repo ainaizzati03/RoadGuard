@@ -1,0 +1,8 @@
+<resources>
+    <color name="soft_green">#A8D8BA</color>
+    <color name="soft_green_dark">#5FA88F</color>
+    <color name="button_green">#4CAF90</color>
+    <color name="grey_light">#C0C0C0</color>
+    <color name="grey_dark">#424242</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

@@ -1,0 +1,216 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TripInfoActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:padding="20dp"
+            android:background="@drawable/green_border">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Trip Information"
+                android:textSize="30sp"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="@color/soft_green_dark"/>
+
+            <!-- Vehicle Brand -->
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:id="@+id/vehicleBrand"
+                android:background="@drawable/green_border"
+                android:layout_marginTop="20dp"
+                android:padding="16dp"
+                android:hint="Vehicle Brand"
+                android:gravity="start|center_vertical"
+                android:textColor="@color/soft_green"/>
+
+            <!-- Vehicle Registration Plate -->
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:id="@+id/vehicleReg"
+                android:background="@drawable/green_border"
+                android:layout_marginTop="20dp"
+                android:padding="16dp"
+                android:hint="Vehicle Reg. Plate"
+                android:gravity="start|center_vertical"
+                android:textColor="@color/soft_green"/>
+
+            <!-- Vehicle Color -->
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:id="@+id/vehicleColor"
+                android:background="@drawable/green_border"
+                android:layout_marginTop="20dp"
+                android:padding="16dp"
+                android:hint="Vehicle Color"
+                android:gravity="start|center_vertical"
+                android:textColor="@color/soft_green"/>
+
+            <!-- Number of Passengers -->
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:id="@+id/noPass"
+                android:background="@drawable/green_border"
+                android:layout_marginTop="20dp"
+                android:padding="16dp"
+                android:hint="No. of Passenger"
+                android:gravity="start|center_vertical"
+                android:textColor="@color/soft_green"/>
+
+            <!-- Age Groups on one line -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:weightSum="2">
+
+                <!-- Senior Citizens -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Senior Citizen"
+                        android:textColor="@color/soft_green"
+                        android:layout_gravity="center_horizontal"/>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:id="@+id/seniorCitizen"
+                        android:background="@drawable/green_border"
+                        android:padding="16dp"
+                        android:gravity="start|center_vertical"
+                        android:textColor="@color/soft_green"/>
+                </LinearLayout>
+
+                <!-- Adults -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Adult"
+                        android:textColor="@color/soft_green"
+                        android:layout_gravity="center_horizontal"/>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:id="@+id/adult"
+                        android:background="@drawable/green_border"
+                        android:padding="16dp"
+                        android:gravity="start|center_vertical"
+                        android:textColor="@color/soft_green"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Age Groups on another line -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:weightSum="2">
+
+                <!-- Children -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Children"
+                        android:textColor="@color/soft_green"
+                        android:layout_gravity="center_horizontal"/>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:id="@+id/children"
+                        android:background="@drawable/green_border"
+                        android:padding="16dp"
+                        android:gravity="start|center_vertical"
+                        android:textColor="@color/soft_green"/>
+                </LinearLayout>
+
+                <!-- Infants -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Infant"
+                        android:textColor="@color/soft_green"
+                        android:layout_gravity="center_horizontal"/>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:id="@+id/infant"
+                        android:background="@drawable/green_border"
+                        android:padding="16dp"
+                        android:gravity="start|center_vertical"
+                        android:textColor="@color/soft_green"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Additional Detail -->
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:id="@+id/addDetail"
+                android:background="@drawable/green_border"
+                android:layout_marginTop="20dp"
+                android:padding="16dp"
+                android:hint="Additional Detail"
+                android:gravity="start|center_vertical"
+                android:textColor="@color/soft_green"/>
+
+            <!-- Save Button -->
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Save"
+                android:id="@+id/saveButton"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"
+                app:cornerRadius = "20dp"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</ScrollView>
