@@ -22,7 +22,9 @@ public class MainActivity extends AppCompatActivity {
         // Set onClickListener for the "Drive Mode" button
         driveModeButton.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, TripInfoActivity.class);
+            intent.putExtra("ic", getIntent().getStringExtra("ic")); // Pass IC from LoginActivity
             startActivity(intent);
+
         });
 
         // Set onClickListener for the "Update Profile" button

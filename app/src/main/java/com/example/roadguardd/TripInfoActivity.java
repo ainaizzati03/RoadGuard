@@ -19,11 +19,15 @@ public class TripInfoActivity extends AppCompatActivity {
     EditText vehicleBrand, vehicleReg, vehicleColor, noPass,
             seniorCitizen, adult, children, infant, addDetail;
     Button saveButton;
+    String userIC; // Will store the IC from intent
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trip_info);
+
+        // Get the IC number from intent
+        userIC = getIntent().getStringExtra("ic");
 
         // Initialize UI
         vehicleBrand = findViewById(R.id.vehicleBrand);
@@ -68,7 +72,9 @@ public class TripInfoActivity extends AppCompatActivity {
                     addDetail.getText().toString()
             );
 
+            // Save under: TripInformation / {userIC} / push ID
             FirebaseDatabase.getInstance().getReference("TripInformation")
+                    .child(userIC)
                     .push()
                     .setValue(tripData)
                     .addOnSuccessListener(unused -> {

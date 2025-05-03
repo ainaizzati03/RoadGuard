@@ -12,43 +12,14 @@ public class DataClass {
     private Integer dataInfant;
     private String dataAddDetail;
 
-    public String getDataVehicleBrand() {
-        return dataVehicleBrand;
+    public DataClass() {
+        // Required by Firebase
     }
 
-    public String getDataVehicleReg() {
-        return dataVehicleReg;
-    }
+    public DataClass(String dataVehicleBrand, String dataVehicleReg, String dataVehicleColor,
+                     Integer dataNoPass, Integer dataSeniorCitizen, Integer dataAdult,
+                     Integer dataChildren, Integer dataInfant, String dataAddDetail) {
 
-    public String getDataVehicleColor() {
-        return dataVehicleColor;
-    }
-
-    public Integer getDataNoPass() {
-        return dataNoPass;
-    }
-
-    public Integer getDataSeniorCitizen() {
-        return dataSeniorCitizen;
-    }
-
-    public Integer getDataAdult() {
-        return dataAdult;
-    }
-
-    public Integer getDataChildren() {
-        return dataChildren;
-    }
-
-    public Integer getDataInfant() {
-        return dataInfant;
-    }
-
-    public String getDataAddDetail() {
-        return dataAddDetail;
-    }
-
-    public DataClass(String dataVehicleBrand, String dataVehicleReg, String dataVehicleColor, Integer dataNoPass, Integer dataSeniorCitizens, Integer dataAdult, Integer dataChildren, Integer dataInfant, String dataAddDetail) {
         this.dataVehicleBrand = dataVehicleBrand;
         this.dataVehicleReg = dataVehicleReg;
         this.dataVehicleColor = dataVehicleColor;
@@ -59,4 +30,15 @@ public class DataClass {
         this.dataInfant = dataInfant;
         this.dataAddDetail = dataAddDetail;
     }
+
+    // Getters...
+    public String getDataVehicleBrand() { return dataVehicleBrand; }
+    public String getDataVehicleReg() { return dataVehicleReg; }
+    public String getDataVehicleColor() { return dataVehicleColor; }
+    public Integer getDataNoPass() { return dataNoPass; }
+    public Integer getDataSeniorCitizen() { return dataSeniorCitizen; }
+    public Integer getDataAdult() { return dataAdult; }
+    public Integer getDataChildren() { return dataChildren; }
+    public Integer getDataInfant() { return dataInfant; }
+    public String getDataAddDetail() { return dataAddDetail; }
 }

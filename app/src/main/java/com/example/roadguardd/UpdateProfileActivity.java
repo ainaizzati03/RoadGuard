@@ -58,7 +58,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
     public boolean isPhoneChanged(){
         if (!phoneUser.equals(updatePhone.getText().toString())){
-            reference.child(ICUser).child("name").setValue(updatePhone.getText().toString());
+            reference.child(ICUser).child("phone").setValue(updatePhone.getText().toString());
             phoneUser = updatePhone.getText().toString();
             return true;
         } else{
