@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
@@ -72,15 +73,33 @@ public class TripInfoActivity extends AppCompatActivity {
                     addDetail.getText().toString()
             );
 
-            // Save under: TripInformation / {userIC} / push ID
-            FirebaseDatabase.getInstance().getReference("TripInformation")
+            // Generate a unique trip ID
+            String tripID = FirebaseDatabase.getInstance()
+                    .getReference("TripInformation")
                     .child(userIC)
                     .push()
+                    .getKey();
+
+            if (tripID == null) {
+                dialog.dismiss();
+                Toast.makeText(this, "Failed to create trip ID", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            FirebaseDatabase.getInstance().getReference("TripInformation")
+                    .child(userIC)
+                    .child(tripID)
                     .setValue(tripData)
                     .addOnSuccessListener(unused -> {
                         dialog.dismiss();
                         Toast.makeText(TripInfoActivity.this, "Trip Info Saved", Toast.LENGTH_SHORT).show();
-                        finish(); // close activity
+
+                        // Pass userIC and tripID to MapsActivity
+                        Intent intent = new Intent(TripInfoActivity.this, MapsActivity.class);
+                        intent.putExtra("userIC", userIC);
+                        intent.putExtra("tripID", tripID);
+                        startActivity(intent);
+                        finish();
                     })
                     .addOnFailureListener(e -> {
                         dialog.dismiss();
@@ -92,4 +111,5 @@ public class TripInfoActivity extends AppCompatActivity {
             Toast.makeText(this, "Please enter valid numbers", Toast.LENGTH_SHORT).show();
         }
     }
+
 }

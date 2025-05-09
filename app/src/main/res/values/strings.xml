@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RoadGuardd</string>
+    <string name="my_map_api_key">AIzaSyDplSFhb1AeHc3aZ73KgawsCK5dBUVbM_Y</string>
 </resources>

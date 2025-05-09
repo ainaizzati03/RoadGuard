@@ -26,8 +26,8 @@
         android:textColor="@color/soft_green_dark"
         android:textSize="40sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="116dp"
-        tools:layout_editor_absoluteY="233dp" />
+        tools:layout_editor_absoluteX="117dp"
+        tools:layout_editor_absoluteY="267dp" />
 
     <Button
         android:id="@+id/btn_accident_prone"
