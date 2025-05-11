@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Top layout: SOS + Report -->
+    <LinearLayout
+        android:id="@+id/topButtonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="80dp"
+        android:gravity="center"
+        android:layout_marginBottom="8dp"
+        android:background="@android:color/transparent">
+
+        <Button
+            android:id="@+id/sosButton"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="16dp"
+            android:text="SOS"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/round_button" />
+
+        <Button
+            android:id="@+id/reportAccidentButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Report Accident" />
+    </LinearLayout>
+
+    <!-- Bottom layout: End Drive -->
+    <LinearLayout
+        android:id="@+id/bottomButtonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:padding="16dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/endDriveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="End Drive" />
+    </LinearLayout>
+
+</FrameLayout>
