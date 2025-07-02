@@ -3,27 +3,27 @@ package com.example.roadguardd;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.accounts.Account;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.*;
 
 public class LoginActivity extends AppCompatActivity {
 
     EditText loginIC, loginPassword;
+    ImageView loginTogglePassword;
     Button loginButton;
     TextView registerRedirectText;
+
+    boolean isPasswordVisible = false;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -33,26 +33,33 @@ public class LoginActivity extends AppCompatActivity {
 
         loginIC = findViewById(R.id.login_IC);
         loginPassword = findViewById(R.id.login_password);
+        loginTogglePassword = findViewById(R.id.login_toggle_password);
         registerRedirectText = findViewById(R.id.registerRedirectText);
         loginButton = findViewById(R.id.login_button);
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!validateIC() | !validatePassword()) {
-                    // Input validation failed
-                } else {
-                    checkUser();
-                }
+        loginTogglePassword.setOnClickListener(v -> {
+            isPasswordVisible = !isPasswordVisible;
+            if (isPasswordVisible) {
+                loginPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                loginTogglePassword.setImageResource(R.drawable.ic_eye_open);
+            } else {
+                loginPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                loginTogglePassword.setImageResource(R.drawable.ic_eye_closed);
+            }
+            loginPassword.setSelection(loginPassword.length());
+        });
+
+        loginButton.setOnClickListener(view -> {
+            if (!validateIC() | !validatePassword()) {
+                // Input validation failed
+            } else {
+                checkUser();
             }
         });
 
-        registerRedirectText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent);
-            }
+        registerRedirectText.setOnClickListener(view -> {
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(intent);
         });
     }
 
@@ -119,6 +126,4 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
-
 }

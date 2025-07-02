@@ -5,5 +5,5 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.RoadGuardd" parent="Base.Theme.RoadGuardd" />
+    <style name="Theme.RoadGuardd" parent="Base.Theme.RoadGuardd" />z
 </resources>

@@ -57,17 +57,34 @@
                 android:drawablePadding="8dp"
                 android:textColor="@color/grey_dark"/>
 
-            <EditText
-                android:id="@+id/login_password"
+            <!-- Password Field with Toggle Eye Icon -->
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/green_border"
-                android:padding="8dp"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:drawablePadding="8dp"
-                android:textColor="@color/grey_dark" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp">
+
+                <EditText
+                    android:id="@+id/login_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginEnd="-35dp"
+                    android:layout_toStartOf="@+id/login_toggle_password"
+                    android:background="@drawable/green_border"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:padding="8dp"
+                    android:textColor="@color/grey_dark" />
+
+                <ImageView
+                    android:id="@+id/login_toggle_password"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/ic_eye_closed"
+                    android:contentDescription="Toggle Password" />
+            </RelativeLayout>
 
             <Button
                 android:id="@+id/login_button"
