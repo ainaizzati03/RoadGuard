@@ -16,7 +16,10 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class ReportActivity extends FragmentActivity {
@@ -33,11 +36,9 @@ public class ReportActivity extends FragmentActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_report);
 
-        // Get data passed from previous activity
         userIC = getIntent().getStringExtra("userIC");
         tripID = getIntent().getStringExtra("tripID");
 
-        // Bind views
         levelInjury = findViewById(R.id.levelInjury);
         numVictim = findViewById(R.id.numVictim);
         numVehicle = findViewById(R.id.numVehicle);
@@ -45,7 +46,6 @@ public class ReportActivity extends FragmentActivity {
         cancelButton = findViewById(R.id.cancelButton);
         sendButton = findViewById(R.id.sendButton);
 
-        // Spinner setup
         String[] injuryLevels = {"Select injury level", "Mild", "Severe", "Very Severe"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, injuryLevels);
         levelInjury.setAdapter(adapter);
@@ -64,7 +64,6 @@ public class ReportActivity extends FragmentActivity {
             String vehicleCount = numVehicle.getText().toString().trim();
             String otherInfo = otherDetail.getText().toString().trim();
 
-            // Validate fields
             if (injuryLevel.equals("Select injury level") || victimCount.isEmpty() || vehicleCount.isEmpty() || otherInfo.isEmpty()) {
                 new AlertDialog.Builder(ReportActivity.this)
                         .setTitle("Incomplete Form")
@@ -75,7 +74,6 @@ public class ReportActivity extends FragmentActivity {
                 return;
             }
 
-            // Check if GPS is enabled
             LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
             boolean isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
@@ -93,11 +91,11 @@ public class ReportActivity extends FragmentActivity {
                 return;
             }
 
-            // Hardcoded location (KLCC) — replace with actual GPS data later
-            double lat = 3.1579;
-            double lon = 101.7123;
+            double lat = 5.7636;
+            double lon = 102.4113;
+            String timestamp = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault()).format(new Date());
 
-            // Prepare data
+
             Map<String, Object> reportData = new HashMap<>();
             reportData.put("latitude", lat);
             reportData.put("longitude", lon);
@@ -105,9 +103,8 @@ public class ReportActivity extends FragmentActivity {
             reportData.put("numVictim", victimCount);
             reportData.put("numVehicle", vehicleCount);
             reportData.put("otherDetail", otherInfo);
-            reportData.put("timestamp", System.currentTimeMillis());
+            reportData.put("timestamp", timestamp);
 
-            // Send to Firebase
             FirebaseDatabase.getInstance().getReference("ReportAccident")
                     .child(userIC)
                     .child(tripID)
